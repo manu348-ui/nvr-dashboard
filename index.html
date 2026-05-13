@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="refresh" content="300">
+<title>NVR Monitor</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Segoe UI',Arial,sans-serif;background:#0f1923;color:#e0e0e0;min-height:100vh}
+  header{background:#1a2634;padding:16px 24px;border-bottom:1px solid #2a3a4a;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+  .logo{font-size:1.1em;font-weight:700;color:#fff;letter-spacing:1px}
+  .logo span{color:#3498db}
+  .nvr-status{display:flex;align-items:center;gap:8px;font-size:.85em;color:#aaa}
+  .dot{width:10px;height:10px;border-radius:50%;background:#27ae60;box-shadow:0 0 8px #27ae60}
+  .stats{display:flex;gap:12px;padding:20px 24px;flex-wrap:wrap}
+  .stat-card{flex:1;min-width:140px;background:#1a2634;border-radius:10px;padding:16px 20px;text-align:center;border:1px solid #2a3a4a}
+  .stat-num{font-size:2.2em;font-weight:700;line-height:1}
+  .stat-label{font-size:.8em;color:#aaa;margin-top:4px;text-transform:uppercase;letter-spacing:.5px}
+  .section-title{padding:8px 24px;font-size:.75em;color:#7a8a9a;text-transform:uppercase;letter-spacing:1px}
+  .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px;padding:0 24px 24px}
+  .card{background:#1a2634;border-radius:10px;padding:14px;border:1px solid #2a3a4a;transition:transform .15s}
+  .card:hover{transform:translateY(-2px)}
+  .card-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+  .ch{font-size:.75em;color:#7a8a9a;font-weight:600;text-transform:uppercase}
+  .badge{font-size:.7em;font-weight:700;padding:3px 8px;border-radius:20px;color:#fff;letter-spacing:.3px}
+  .cam-name{font-size:.95em;font-weight:600;color:#fff;margin-bottom:6px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .cam-meta{display:flex;gap:10px;font-size:.75em;color:#7a8a9a;margin-top:3px;flex-wrap:wrap}
+  .issues-box{margin-top:8px;padding:6px 8px;background:#2a1a1a;border-radius:6px;border-left:3px solid #e74c3c}
+  .issue{font-size:.75em;color:#e74c3c;padding:1px 0}
+  .alert-box{margin:0 24px 12px;padding:10px 14px;background:#2a1a1a;border-radius:8px;border-left:4px solid #e74c3c;font-size:.85em;color:#e74c3c}
+  .overall{margin:16px 24px 8px;padding:12px 18px;background:#1a2634;border-radius:10px;border:1px solid #2a3a4a;display:flex;align-items:center;gap:12px}
+  .overall-text{font-weight:700;font-size:.95em}
+  .ts{font-size:.75em;color:#7a8a9a;margin-left:auto}
+  footer{text-align:center;padding:16px;font-size:.75em;color:#3a4a5a;border-top:1px solid #1a2634}
+  @media(max-width:500px){.stats{gap:8px;padding:12px}.cards{padding:0 12px 12px}.stat-num{font-size:1.8em}}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">NVR <span>Monitor</span></div>
+  <div class="nvr-status">
+    <div class="dot"></div>
+    <span>DHI-NVR4232-4KS2 &nbsp;|&nbsp; FW 3.215.0000</span>
+  </div>
+</header>
+
+<div class="overall">
+  <div class="dot"></div>
+  <div class="overall-text" style="color:#27ae60">SISTEMA OK</div>
+  <div class="ts">Actualizado: 2026-05-13 11:48:31</div>
+</div>
+
+<div class="stats">
+  <div class="stat-card">
+    <div class="stat-num" style="color:#27ae60">10</div>
+    <div class="stat-label">En linea</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-num" style="color:#e67e22">2</div>
+    <div class="stat-label">Advertencias</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-num" style="color:#e74c3c">0</div>
+    <div class="stat-label">Errores</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-num" style="color:#95a5a6">20</div>
+    <div class="stat-label">Libres</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-num" style="color:#3498db">12</div>
+    <div class="stat-label">Total activos</div>
+  </div>
+</div>
+
+
+
+<div class="section-title">Camaras</div>
+<div class="cards">
+        <div class="card" style="border-top:4px solid #27ae60">
+          <div class="card-header">
+            <span class="ch">CH 1</span>
+            <span class="badge" style="background:#27ae60">● EN LINEA</span>
+          </div>
+          <div class="cam-name">4B026F1PAG18F00</div>
+          <div class="cam-meta">
+            <span>📍 192.168.0.101</span>
+            <span>🔌 Dahua2</span>
+          </div>
+          <div class="cam-meta">
+            <span>👤 admin</span>
+            <span>MAC: 14:a7:8b:3a:90:8e</span>
+          </div>
+          
+        </div>
+        <div class="card" style="border-top:4px solid #27ae60">
+          <div class="card-header">
+            <span class="ch">CH 2</span>
+            <span class="badge" style="background:#27ae60">● EN LINEA</span>
+          </div>
+          <div class="cam-name">4B026F1PAG218C7</div>
+          <div class="cam-meta">
+            <span>📍 192.168.0.102</span>
+            <span>🔌 Onvif</span>
+          </div>
+          <div class="cam-meta">
+            <span>👤 Gabi</span>
+            <span>MAC: 14:a7:8b:3a:90:7d</span>
+          </div>
+          
+        </div>
+        <div class="card" style="border-top:4px solid #27ae60">
+          <div class="card-header">
+            <span class="ch">CH 3</span>
+            <span class="badge" style="background:#27ae60">● EN LINEA</span>
+          </div>
+          <div class="cam-name">6K034BFRAGCC14B</div>
+          <div class="cam-meta">
+            <span>📍 192.168.0.203</span>
+            <span>🔌 Onvif</span>
+          </div>
+          <div class="cam-meta">
+            <span>👤 gabi</span>
+            <span>MAC: bc:32:5f:b2:3e:03</span>
+          </div>
+          
+        </div>
+        <div class="card" style="border-top:4px solid #27ae60">
+          <div class="card-header">
+            <span class="ch">CH 4</span>
+            <span class="badge" style="background:#27ae60">● EN LINEA</span>
+          </div>
+          <div class="cam-name">8K085CFPAG1F863</div>
+          <div class="cam-meta">
+            <span>📍 192.168.0.56</span>
+            <span>🔌 Onvif</span>
+          </div>
+          <div class="cam-meta">
+            <span>👤 admin</span>
+            <span>MAC: fc:b6:9d:f8:de:82</span>
+          </div>
+          
+        </div>
+        <div class="card" style="border-top:4px solid #e67e22">
+          <div class="card-header">
+            <span class="ch">CH 6</span>
+            <span class="badge" style="background:#e67e22">▲ ADVERTENCIA</span>
+          </div>
+          <div class="cam-name">Taller_a_porton_trasero</div>
+          <div class="cam-meta">
+            <span>📍 192.168.0.28</span>
+            <span>🔌 Onvif</span>
+          </div>
+          <div class="cam-meta">
+            <span>👤 gabi</span>
+            <span>MAC: —</span>
+          </div>
+          <div class="issues-box"><div class="issue">MAC no leida — camara nunca conecto al NVR</div></div>
+        </div>
+        <div class="card" style="border-top:4px solid #27ae60">
+          <div class="card-header">
+            <span class="ch">CH 8</span>
+            <span class="badge" style="background:#27ae60">● EN LINEA</span>
+          </div>
+          <div class="cam-name">aaaa</div>
+          <div class="cam-meta">
+            <span>📍 192.168.0.216</span>
+            <span>🔌 Dahua2</span>
+          </div>
+          <div class="cam-meta">
+            <span>👤 Admin</span>
+            <span>MAC: —</span>
+          </div>
+          
+        </div>
+        <div class="card" style="border-top:4px solid #27ae60">
+          <div class="card-header">
+            <span class="ch">CH 9</span>
+            <span class="badge" style="background:#27ae60">● EN LINEA</span>
+          </div>
+          <div class="cam-name">Galeria</div>
+          <div class="cam-meta">
+            <span>📍 192.168.0.208</span>
+            <span>🔌 Dahua2</span>
+          </div>
+          <div class="cam-meta">
+            <span>👤 admin</span>
+            <span>MAC: —</span>
+          </div>
+          
+        </div>
+        <div class="card" style="border-top:4px solid #e67e22">
+          <div class="card-header">
+            <span class="ch">CH 10</span>
+            <span class="badge" style="background:#e67e22">▲ ADVERTENCIA</span>
+          </div>
+          <div class="cam-name">Garage</div>
+          <div class="cam-meta">
+            <span>📍 192.168.0.206</span>
+            <span>🔌 Onvif</span>
+          </div>
+          <div class="cam-meta">
+            <span>👤 gabi</span>
+            <span>MAC: —</span>
+          </div>
+          <div class="issues-box"><div class="issue">MAC no leida — camara nunca conecto al NVR</div></div>
+        </div>
+        <div class="card" style="border-top:4px solid #27ae60">
+          <div class="card-header">
+            <span class="ch">CH 11</span>
+            <span class="badge" style="background:#27ae60">● EN LINEA</span>
+          </div>
+          <div class="cam-name">Living</div>
+          <div class="cam-meta">
+            <span>📍 192.168.0.205</span>
+            <span>🔌 Dahua2</span>
+          </div>
+          <div class="cam-meta">
+            <span>👤 admin</span>
+            <span>MAC: —</span>
+          </div>
+          
+        </div>
+        <div class="card" style="border-top:4px solid #27ae60">
+          <div class="card-header">
+            <span class="ch">CH 13</span>
+            <span class="badge" style="background:#27ae60">● EN LINEA</span>
+          </div>
+          <div class="cam-name">Playon_desde_cromatic</div>
+          <div class="cam-meta">
+            <span>📍 192.168.0.115</span>
+            <span>🔌 Dahua2</span>
+          </div>
+          <div class="cam-meta">
+            <span>👤 admin</span>
+            <span>MAC: —</span>
+          </div>
+          
+        </div>
+        <div class="card" style="border-top:4px solid #27ae60">
+          <div class="card-header">
+            <span class="ch">CH 14</span>
+            <span class="badge" style="background:#27ae60">● EN LINEA</span>
+          </div>
+          <div class="cam-name">Local 9 hacia 517</div>
+          <div class="cam-meta">
+            <span>📍 192.168.0.113</span>
+            <span>🔌 Dahua2</span>
+          </div>
+          <div class="cam-meta">
+            <span>👤 admin</span>
+            <span>MAC: —</span>
+          </div>
+          
+        </div>
+        <div class="card" style="border-top:4px solid #27ae60">
+          <div class="card-header">
+            <span class="ch">CH 15</span>
+            <span class="badge" style="background:#27ae60">● EN LINEA</span>
+          </div>
+          <div class="cam-name">Ingreso desde porton exterior</div>
+          <div class="cam-meta">
+            <span>📍 192.168.0.118</span>
+            <span>🔌 Dahua2</span>
+          </div>
+          <div class="cam-meta">
+            <span>👤 admin</span>
+            <span>MAC: —</span>
+          </div>
+          
+        </div></div>
+
+<footer>Refresca cada 5 min &nbsp;·&nbsp; manu348.tplinkdns.com &nbsp;·&nbsp; github.com/manu348-ui/nvr-monitor</footer>
+</body>
+</html>
